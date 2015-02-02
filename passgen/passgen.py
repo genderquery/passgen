@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-import re
 from argparse import ArgumentParser
 from random import SystemRandom
 
