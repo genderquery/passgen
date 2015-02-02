@@ -3,6 +3,8 @@
 from argparse import ArgumentParser
 from random import SystemRandom
 
+# TODO: add docstrings
+
 _digits = '0123456789'
 _uppercase = 'ABCDEFGHIJKLMNOPQRSTUVWXYZ'
 _lowercase = 'abcdefghijklmnopqrstuvwxyz'
