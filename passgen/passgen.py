@@ -55,9 +55,9 @@ def passgen(length=8, uppercase=True, digits=True, symbols=False,
         charset += _symbols
         conditions.append(lambda s: _contains(s, _symbols))
     if not ambiguous:
-        charset.translate(None, _ambiguous)
+        charset = charset.translate(None, _ambiguous)
     if not vowels:
-        charset.translate(None, _vowels)
+        charset = charset.translate(None, _vowels)
     return _passgen(length, charset, conditions)
             
 if __name__ == '__main__':
