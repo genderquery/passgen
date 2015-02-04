@@ -1,6 +1,5 @@
 #!/usr/bin/env python
 
-from argparse import ArgumentParser
 from random import SystemRandom
 
 # TODO: add docstrings
@@ -13,7 +12,7 @@ _ambiguous = 'B8G6I1l0OQDS5Z2'
 _vowels = '01aeiouyAEIOUY'
 _max_attempts = 100
 
-def _passgen(length, charset, conditions=None):
+def _generate(length, charset, conditions=None):
     choice = SystemRandom().choice
     all_conditions_met = False
     password = None
@@ -43,8 +42,8 @@ def _contains(a, b):
             return True
     return False
     
-def passgen(length=8, uppercase=True, digits=True, symbols=False, 
-            ambiguous=True, vowels=True):
+def generate(length=8, uppercase=True, digits=True, symbols=False, 
+             ambiguous=True, vowels=True):
     conditions = []
     charset = _lowercase
     if uppercase:
@@ -60,21 +59,8 @@ def passgen(length=8, uppercase=True, digits=True, symbols=False,
         charset = charset.translate(None, _ambiguous)
     if not vowels:
         charset = charset.translate(None, _vowels)
-    return _passgen(length, charset, conditions)
-            
+    return _generate(length, charset, conditions)
+       
 if __name__ == '__main__':
-    parser = ArgumentParser()
-    parser.add_argument('--length', '-l', type=int, default=8)
-    parser.add_argument('--uppercase', '-u', action='store_true')
-    parser.add_argument('--digits', '-d', action='store_true')
-    parser.add_argument('--symbols', '-s', action='store_true')
-    parser.add_argument(
-        '--no-ambiguous', '-a', action='store_false', dest='ambiguous',
-         default=True)
-    parser.add_argument(
-        '--no-vowels', '-v', action='store_false', dest='vowels', 
-        default=True)
-    args = parser.parse_args()
-    password = passgen(**args.__dict__)
-    print(password)
+    pass
     
